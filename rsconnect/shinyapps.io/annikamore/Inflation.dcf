@@ -1,0 +1,12 @@
+name: Inflation
+title: Inflation
+username: annikamore
+account: annikamore
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 15228100
+bundleId: 10792106
+url: https://annikamore.shinyapps.io/Inflation/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
