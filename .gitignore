@@ -1,1 +1,12 @@
-.Rproj.user/ .Rhistory .RData .Ruserdata .Renviron *.Rds cached_*/
+# R
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# MacOS
+.DS_Store
+
+# Caches
+.Renviron
+.cache/
