@@ -9,4 +9,5 @@
 
 # Caches
 .Renviron
+.Renviron.R
 .cache/
