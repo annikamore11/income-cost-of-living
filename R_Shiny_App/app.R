@@ -81,7 +81,10 @@ ui <- fluidPage(
         DT::dataTableOutput("COL_table"),
         br(),
         br(),
-        plotlyOutput("plot_rpp")
+        plotlyOutput("plot_rpp"),
+        br(),
+        br(),
+        plotlyOutput("plot_dollar")
       )
     )
   )
@@ -347,6 +350,22 @@ server <- function(input, output, session) {
     )
   })
   
+  # Value of $100 over time
+  output$plot_dollar <- renderPlotly({
+    req(clicked_geo())
+    req(input$metric_category == "Cost of Living")
+    df <- state_metro_TS_final %>% filter(GeoFips == clicked_geo())
+    plot_ly(df, x = ~Year) %>%
+      add_trace(y = ~val_100_dollars, type = 'scatter', mode = 'lines+markers',
+                name = "Real Value of $100", line = list(color = 'blue', width = 2)) %>%
+      add_trace(x = ~Year, y = rep(100, nrow(df)),
+                type = 'scatter', mode = 'lines',
+                name = 'Baseline ($100)',
+                line = list(dash = 'dash', color = 'black'),
+                showlegend = TRUE) %>%
+      layout(title = "Real Value of $100 Over Time",
+             yaxis = list(title = "Dellars (USD)"))
+  })
   
 }
 

@@ -219,7 +219,10 @@ state_housing_RPP <- as.data.frame(data_RPP) %>%
 state_combined <- state_combined %>%
   left_join(state_housing_RPP %>% select(GeoFips, Year, rpp_housing), 
             by = c("GeoFips", "Year")
-  ) 
+  ) %>% 
+  mutate(
+    val_100_dollars = (100/ rpp_all_goods)*100
+  )
 
 
 ###########################################################################################
@@ -429,7 +432,10 @@ metro_housing_RPP <- as.data.frame(data_RPP) %>%
 metro_combined <- metro_combined %>%
   left_join(metro_housing_RPP %>% select(GeoFips, Year, rpp_housing), 
             by = c("GeoFips", "Year")
-  ) 
+  ) %>% 
+  mutate(
+    val_100_dollars = (100/ rpp_all_goods)*100
+  )
 
 ###########################################################################################
 # Create a dataframe for state/metro 2023 data 
